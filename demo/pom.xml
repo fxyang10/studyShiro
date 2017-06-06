@@ -33,7 +33,19 @@
 		<dependency>
 	       <groupId>org.springframework.boot</groupId>
 	       <artifactId>spring-boot-starter-web</artifactId>
+	       <exclusions>
+	       <!--需要在外部容器中配置是要过滤掉springBoot自带的tomcat  -->
+	       		<exclusion>
+	       				  <groupId>org.springframework.boot</groupId>
+						  <artifactId>spring-boot-starter-tomcat</artifactId>     		
+	       		</exclusion>
+	       </exclusions>
 		</dependency>
+		<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+    <scope>provided</scope>
+</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
