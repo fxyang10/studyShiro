@@ -6,7 +6,7 @@
 	<groupId>com.dudu</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>webThymeleaf</name>
 	<description>Demo project for Spring Boot</description>
@@ -33,15 +33,15 @@
 		<dependency>
 	       <groupId>org.springframework.boot</groupId>
 	       <artifactId>spring-boot-starter-web</artifactId>
-	       <exclusions>
-	       <!--需要在外部容器中配置是要过滤掉springBoot自带的tomcat  -->
+	      <!--  <exclusions>
+	       需要在外部容器中配置是要过滤掉springBoot自带的tomcat 
 	       		<exclusion>
 	       				  <groupId>org.springframework.boot</groupId>
 						  <artifactId>spring-boot-starter-tomcat</artifactId>     		
 	       		</exclusion>
-	       </exclusions>
+	       </exclusions> -->
 		</dependency>
-		<dependency>
+<dependency>
     <groupId>org.apache.tomcat.embed</groupId>
     <artifactId>tomcat-embed-jasper</artifactId>
     <scope>provided</scope>
@@ -64,15 +64,23 @@
 		</dependency>
 
 	</dependencies>
-
+	<!-- 项目打包所使用的插件 -->
 	<build>
 		<plugins>
+		<!--springboot集成maven 插件  -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 		</plugins>
+		<!--最终打包的名称 和properties 中项目的跟路径一样 -->
+		<finalName>demo</finalName>
 	</build>
-
-
 </project>
